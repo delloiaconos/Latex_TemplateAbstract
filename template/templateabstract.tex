@@ -1,0 +1,84 @@
+%---------------------------------------------------------------------
+% ABSTRACT CONFIGURATION
+%---------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+%   01: PACKAGES
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{xspace}
+\usepackage{epsfig,amsmath,amsthm,amsfonts,graphicx,amssymb}
+\usepackage{times}
+
+\usepackage{lipsum}
+
+%\linespread{1.0}
+%---------------------------------------------------------------------
+%   02: PAGE LAYOUT
+% HORIZONTAL POSITIONING >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\setlength{\hoffset}         { -1in}  % 1 right margin offset = zero
+\addtolength{\hoffset}       { 00mm}  % 1 crop to 17cm size: flushing right (including 10mm ligature)
+\setlength{\oddsidemargin}   { 20mm}  % 3  left/odd  margin of +32mm
+\setlength{\evensidemargin}  { 20mm}  % 3* left/even margin of +16mm
+\setlength{\textwidth}       {170mm}  % 8 width  of the text of 130mm
+\setlength{\marginparsep}    {  0mm}  % 9 margin notes separation
+\setlength{\marginparwidth}  {  0mm}  %10 margin notes width
+% TOTAL...................... 210mm OK!
+% VERTICAL  POSITIONING>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\setlength{\voffset}       {   -1in}  % 2 top margin offset to balance +1in offset
+\addtolength{\voffset}     { 20.0mm}  % 2 center in the page: 43.5 mm
+\setlength{\topmargin}     {  0.0mm}  % 4 vertical margin of 0 mm    %
+\setlength{\headheight}    {  0.0mm}  % 5 header height of 5 mm      % voffset + 10mm
+\setlength{\headsep}       {  0.0mm}  % 6 header separation of 5 mm  %
+\setlength{\textheight}    {257.0mm}  % 7 length of the text of 190mm
+\setlength{\footskip}      { 05.0mm}  %11 footer height + separation 10mm (=5mm+5mm)
+% TOTAL.................... 297mm OK!
+%----------------------------------------------------------------------
+
+
+\usepackage{ifthen}
+
+\newboolean{tesiAbilitaDedica}
+\newboolean{tesiAbilitaRingraziamenti}
+
+
+%% Comandi vuoti per il template
+\newcommand{\tesiUniversita}{\empty}
+\newcommand{\tesiDipartimento}{\empty}
+\newcommand{\tesiCdL}{\empty}
+
+\newcommand{\tesiCandidato}{\empty}
+\newcommand{\tesiMatricola}{\empty}
+\newcommand{\tesiTitolo}{\empty}
+\newcommand{\tesiAA}{\empty}
+\newcommand{\tesiData}{\empty}
+
+\newcommand{\tesiRelatoreA}{\empty}
+
+%% BEGIN: Info Template Tesi
+\newcommand{\defUniversita}[1]{\renewcommand{\tesiUniversita}{#1}}
+\newcommand{\defDipartimento}[1]{\renewcommand{\tesiDipartimento}{#1}}
+\newcommand{\defCdL}[1]{\renewcommand{\tesiCdL}{#1}}
+
+\newcommand{\defCandidato}[1]{\renewcommand{\tesiCandidato}{#1}}
+\newcommand{\defMatricola}[1]{\renewcommand{\tesiMatricola}{#1}}
+\newcommand{\defTitolo}[1]{\renewcommand{\tesiTitolo}{#1}}
+\newcommand{\defAA}[1]{\renewcommand{\tesiAA}{#1}}
+\newcommand{\defData}[1]{\renewcommand{\tesiData}{#1}}
+
+\newcommand{\defRelatoreA}[1]{\renewcommand{\tesiRelatoreA}{#1}}
+\newcommand{\defRelatoreB}[1]{\newcommand{\tesiRelatoreB}{#1}}
+\newcommand{\defRelatoreC}[1]{\newcommand{\tesiRelatoreC}{#1}}
+% END: Info Template Tesi
+
+\title{\tesiTitolo}
+\author{
+    Candidato: \emph{\tesiCandidato} (mat. \emph{\tesiMatricola}) \\
+    Relatore: \tesiRelatoreA; \\ 
+    \ifthenelse{\equal{\tesiRelatoreB}{\empty}}{}{
+        Correlatore: \tesiRelatoreB 
+        \ifthenelse{\equal{\tesiRelatoreC}{\empty}}{}{, \tesiRelatoreC}
+    \\}
+    Seduta di laurea del \tesiData 
+}
+\date{\emph{Abstract}}
